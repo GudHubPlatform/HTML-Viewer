@@ -1,4 +1,4 @@
-import  './htmlViewer.webcomponent.js';
+import  './js/htmlViewer.webcomponent.js';
 
 export default class HtmlViewerData {
    getTemplate() {
@@ -6,7 +6,7 @@ export default class HtmlViewerData {
 	var fieldsTemplate = {
 		constructor: 'field',
 		name: 'HTML Viewer',
-		icon: 'code',
+		icon: 'code_editor',
 		type: 'html_viewer',
 		model: {
 		field_name: "HTML Viewer",
@@ -18,7 +18,7 @@ export default class HtmlViewerData {
 					{
 					src: 'form',
 					id: 'default',
-					settings:{
+					settings: {
 						editable: 1,
 						show_field_name: 1,
 						show_field: 1
@@ -44,7 +44,7 @@ export default class HtmlViewerData {
             id: 'simple_icon',
             name: 'Icon',
             content: () =>
-                  `<span gh-icon="code #000 40px normal"></span>`
+                  `<span gh-icon="code_editor #000 40px normal"></span>`
           }]; 
   
         return interpretations;
