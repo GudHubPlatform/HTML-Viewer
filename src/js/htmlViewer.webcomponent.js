@@ -1,30 +1,4 @@
-// import GhHtmlElement from "@gudhub/gh-html-element";
-import '../scss/style.scss';
-export default class GhHtmlElement extends HTMLElement {
-  constructor() {
-		super();
-  }
-
-  render(html) {
-    this.innerHTML = html;
-  }
-
-  observe(variable, callback) {
-    const self = this;
-
-    this.data = {
-      set [variable](v) {
-        self[variable] = v;
-        callback();
-      },
-      get [variable] () {
-        return self[variable];
-      }
-    }
-
-  }
-
-}
+import GhHtmlElement from "@gudhub/gh-html-element";
 class HtmlViewer extends GhHtmlElement {
     constructor() {
       super();
