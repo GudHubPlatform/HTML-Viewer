@@ -71,12 +71,23 @@ class HtmlViewer extends GhHtmlElement {
         }
       }
 
+      this.value_address = {
+        app_id: this.appId,
+        item_id: this.itemId,
+        field_id: this.fileFieldId
+      };
+
+      gudhub.on('gh_value_update', this.value_address, async (e, fieldValue) => {
+        const file = await gudhub.getFile(this.appId, fieldValue);
+        self.data.iframeSrc = file.url + '?timestamp=' + file.last_update;;
+      });
+
       // Subscribe to update file and replace with new src
       gudhub.on('gh_file_update', { file_id: this.fileId }, async function() {
         const file = await gudhub.getFile(self.appId, self.fileId);
 
         if (file) {
-          self.data.iframeSrc = file.url;
+          self.data.iframeSrc = file.url + '?timestamp=' + file.last_update;
         }
         
       });
@@ -86,6 +97,7 @@ class HtmlViewer extends GhHtmlElement {
     disconnectedCallback() {
       // Remove listener from update file
       gudhub.destroy('gh_file_update', { file_id: this.fileId });
+      gudhub.destroy('gh_value_update', this.value_address);
     }
 }
   
