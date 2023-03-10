@@ -11,9 +11,10 @@ export default class HtmlViewerData {
 		model: {
 		field_name: "HTML Viewer",
 		data_type: "html_viewer",
+    name_space: "html_viewer",
 		data_model: {
-        application_id: null,
-        file_field: null,
+        application_id: '',
+        file_field: '',
 				interpretation : [
 					{
 					src: 'form',
@@ -39,7 +40,7 @@ export default class HtmlViewerData {
             id: 'default',
             name: 'Default',
             content: () =>
-                  `<html-viewer app-id="{{field_model.data_model.application_id}}" file-field-id="{{field_model.data_model.file_field}}"></html-viewer>`
+                  `<html-viewer app-id="{{field_model.data_model.application_id}}" file-field-id="{{field_model.data_model.file_field}}" item-id="${itemId}"></html-viewer>`
           },{
             id: 'simple_icon',
             name: 'Icon',
@@ -66,7 +67,17 @@ export default class HtmlViewerData {
                             field_name: 'App Id',
                             name_space: 'application_id',
                             data_type: 'app',
-                            data_model: {}
+                            data_model: {
+                              interpretation : [{
+                                src: 'form',
+                                id: 'with_text',
+                                settings: {
+                                    editable: 1,
+                                    show_field_name: 1,
+                                    show_field: 1
+                                }
+                              }]
+                            }
                         };
                     }
                 },
@@ -78,7 +89,7 @@ export default class HtmlViewerData {
                     settingScope.$watch(function () {
                         return fieldModel.data_model.application_id;
                     }, function(newValue) {
-                        settingScope.field_model.data_model.application_id = newValue;
+                        settingScope.field_model.data_model.app_id = newValue;
                     });
 
                   },
