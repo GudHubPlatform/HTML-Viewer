@@ -9,24 +9,25 @@ export default class HtmlViewerData {
 		icon: 'code_editor',
 		type: 'html_viewer',
 		model: {
-		field_name: "HTML Viewer",
-		data_type: "html_viewer",
-    name_space: "html_viewer",
-		data_model: {
-        application_id: '',
-        file_field: '',
-				interpretation : [
-					{
-					src: 'form',
-					id: 'default',
-					settings: {
-						editable: 1,
-						show_field_name: 1,
-						show_field: 1
-						}
-					}
-				]
-			}
+		 field_name: "HTML Viewer",
+		 data_type: "html_viewer",
+    		 name_space: "html_viewer",
+		 data_model: {
+        	  application_id: '',
+        	  file_field: '',
+		  interpretation : [
+		  {
+		    src: 'form',
+		    id: 'default',
+		    settings: 
+		    {
+			editable: 1,
+			show_field_name: 1,
+			show_field: 1
+		     }
+		   }
+		  ]
+		 }
 		}
 	};
 
