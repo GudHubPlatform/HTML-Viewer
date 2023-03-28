@@ -41,7 +41,7 @@ class HtmlViewer extends GhHtmlElement {
         const file = await gudhub.getFile(this.appId, this.fileId);
 
         if(file) {
-          self.data.iframeSrc = file.url;
+          self.data.iframeSrc = file.url + '?timestamp=' + file.last_update;
         }
       }
 
@@ -53,7 +53,7 @@ class HtmlViewer extends GhHtmlElement {
 
       gudhub.on('gh_value_update', this.value_address, async (e, fieldValue) => {
         const file = await gudhub.getFile(this.appId, fieldValue);
-        self.data.iframeSrc = file.url + '?timestamp=' + file.last_update;;
+        self.data.iframeSrc = file.url + '?timestamp=' + file.last_update;
       });
 
       // Subscribe to update file and replace with new src
